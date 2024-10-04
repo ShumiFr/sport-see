@@ -1,0 +1,25 @@
+:root {
+  --red: #e60000;
+  --blue: #4ab8ff;
+  --yellow: #fdcc0c;
+  --pink: #fd5181;
+  --black: #000000;
+  --white: #ffffff;
+  --font: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  margin: 0;
+  padding: 0;
+  min-width: 1024px;
+  min-height: 780px;
+}
+
+a,
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+  color: var(--white);
+}
