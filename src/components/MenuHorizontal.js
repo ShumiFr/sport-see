@@ -4,7 +4,7 @@ import Logo from "../assets/logo.png";
 
 const MenuHorizontal = () => {
   return (
-    <header className="menu-horizontal">
+    <div className="menu-horizontal">
       <img src={Logo} alt="Logo SportSee" className="menu-horizontal__logo" />
       <nav className="menu-horizontal__nav">
         <ul className="menu-horizontal__list">
@@ -30,7 +30,7 @@ const MenuHorizontal = () => {
           </li>
         </ul>
       </nav>
-    </header>
+    </div>
   );
 };
 

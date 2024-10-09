@@ -1,0 +1,19 @@
+.menu-vertical {
+  position: absolute;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  width: 110px;
+  height: 90vh;
+}
+
+.menu-vertical__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+}

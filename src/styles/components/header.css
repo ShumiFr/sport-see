@@ -1,0 +1,20 @@
+.header {
+  margin-left: 220px;
+  margin-top: 100px;
+}
+
+.header h1 {
+  color: #000;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.header strong {
+  color: #ff0101;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
