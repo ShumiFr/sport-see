@@ -14,6 +14,7 @@ const MenuVertical = () => {
         <Module iconName={bike} />
         <Module iconName={swim} />
         <Module iconName={dumbell} />
+        <p className="copyright">Copyright, SportSee 2020</p>
       </div>
     </div>
   );

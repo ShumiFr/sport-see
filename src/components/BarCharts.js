@@ -69,10 +69,10 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const GraphActivitéQuotidienne = () => {
+const BarCharts = () => {
   return (
-    <div>
-      <ResponsiveContainer width="70%" height={300}>
+    <div className="barchart">
+      <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid
             strokeDasharray="2 2"
@@ -83,7 +83,7 @@ const GraphActivitéQuotidienne = () => {
           <YAxis orientation="right" tickLine={false} axisLine={false} />
           <Tooltip
             animationEasing="ease-out"
-            content={CustomTooltip}
+            content={<CustomTooltip />}
             offset={40}
             wrapperStyle={{ outline: "none" }}
           />
@@ -106,4 +106,4 @@ const GraphActivitéQuotidienne = () => {
   );
 };
 
-export default GraphActivitéQuotidienne;
+export default BarCharts;
