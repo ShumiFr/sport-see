@@ -4,7 +4,6 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
 
@@ -50,16 +49,17 @@ const data = [
 const RadarCharts = () => {
   return (
     <div className="radarchart">
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="90%" height={300}>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis />
+          <PolarAngleAxis
+            tick={{ fill: "white", fontSize: 15, fontWeight: "bold" }}
+            dataKey="subject"
+          />
           <Radar
-            name="Mike"
             dataKey="A"
-            stroke="#8884d8"
-            fill="#8884d8"
+            stroke="#e60000"
+            fill="#e60000"
             fillOpacity={0.6}
           />
         </RadarChart>

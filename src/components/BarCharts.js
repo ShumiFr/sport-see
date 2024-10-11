@@ -6,62 +6,16 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import "../styles/components/graphActivitéQuotidienne.css";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">
-        <p className="desc">{payload[0].value}</p>
-        <p className="desc">{payload[1].value}</p>
+        <p className="desc">{payload[0].value}kg</p>
+        <p className="desc">{payload[1].value}kCal</p>
       </div>
     );
   }
@@ -69,9 +23,18 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const BarCharts = () => {
+const BarCharts = ({ data }) => {
   return (
     <div className="barchart">
+      <div className="barchart__infos">
+        <p className="barchart__infos__title">Activité quotidienne</p>
+        <div className="barchart__infos__legend">
+          <ul>
+            <li>poids (kg)</li>
+            <li>calories brûlées (kCal)</li>
+          </ul>
+        </div>
+      </div>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid
@@ -79,7 +42,7 @@ const BarCharts = () => {
             horizontal={true}
             vertical={false}
           />
-          <XAxis dataKey="name" tickLine={false} axisLine={false} />
+          <XAxis dataKey="day" tickLine={false} axisLine={false} />
           <YAxis orientation="right" tickLine={false} axisLine={false} />
           <Tooltip
             animationEasing="ease-out"
@@ -87,17 +50,16 @@ const BarCharts = () => {
             offset={40}
             wrapperStyle={{ outline: "none" }}
           />
-          <Legend />
           <Bar
             radius={[10, 10, 0, 0]}
             barSize={10}
-            dataKey="pv"
+            dataKey="kilogram"
             fill="#000000"
           />
           <Bar
             radius={[10, 10, 0, 0]}
             barSize={10}
-            dataKey="uv"
+            dataKey="calories"
             fill="#e60000"
           />
         </BarChart>

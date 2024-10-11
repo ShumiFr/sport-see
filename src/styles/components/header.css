@@ -1,6 +1,6 @@
 .header {
-  margin-left: 220px;
-  margin-top: 100px;
+  align-self: flex-start;
+  margin-left: 50px;
 }
 
 .header h1 {

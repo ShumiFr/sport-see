@@ -1,17 +1,29 @@
-.dashboard-page__content {
+.dashboard__content {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 80%;
-  margin: 0 auto;
+  height: 1080px;
 }
 
-.dashboard-page__graphs-container {
-  width: 70%;
+.dashboard__graphs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 100px;
 }
 
-.dashboard-page__graphs {
+.dashboard__graphs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.dashboard__graphs-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,12 +35,51 @@
 .radarchart,
 .radialchart {
   width: 30%;
+  border-radius: 10px;
 }
 
 .linechart {
-  background: var(--red);
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: #ff0000;
 }
 
 .radarchart {
+  display: flex;
+  justify-content: center;
+  align-self: center;
   background: var(--black);
+}
+
+.radialchart {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: var(--lightgrey);
+}
+
+.barchart {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  width: 100%;
+  background: var(--lightgrey);
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.barchart__infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.barchart__infos__legend ul,
+li {
+  color: grey !important;
+  list-style: disc !important;
 }

@@ -1,0 +1,33 @@
+.radialchart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radialchart__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100px;
+}
+
+.radialchart__text p {
+  text-align: center;
+  color: #74798c;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.radialchart__text h3 {
+  color: #282d30;
+  text-align: center;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+}
