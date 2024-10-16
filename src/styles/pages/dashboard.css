@@ -39,10 +39,28 @@
 }
 
 .linechart {
+  position: relative;
   display: flex;
   justify-content: center;
   align-self: center;
   background: #ff0000;
+  padding-top: 30px;
+}
+
+.linechart__legend {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+.linechart__legend p {
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .radarchart {
@@ -50,6 +68,7 @@
   justify-content: center;
   align-self: center;
   background: var(--black);
+  padding: 15px 0 15px 0;
 }
 
 .radialchart {
@@ -57,29 +76,5 @@
   justify-content: center;
   align-self: center;
   background: var(--lightgrey);
-}
-
-.barchart {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  flex-direction: column;
-  width: 100%;
-  background: var(--lightgrey);
-  border-radius: 10px;
-  padding: 0 10px;
-}
-
-.barchart__infos {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.barchart__infos__legend ul,
-li {
-  color: grey !important;
-  list-style: disc !important;
+  padding: 15px 0 15px 0;
 }

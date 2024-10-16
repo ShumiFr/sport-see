@@ -45,6 +45,12 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+const renderLegend = () => {
+  return (
+    <p style={{ color: "#FFFFFF", opacity: 0.7 }}>Durée moyenne des sessions</p>
+  );
+};
+
 const LineCharts = ({ data }) => {
   const formatDay = (day) => {
     const days = ["L", "M", "M", "J", "V", "S", "D"];
@@ -53,6 +59,7 @@ const LineCharts = ({ data }) => {
 
   return (
     <div className="linechart">
+      <div className="linechart__legend">{renderLegend()}</div>
       <ResponsiveContainer width="90%" height={300}>
         <LineChart data={data}>
           <defs>

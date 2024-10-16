@@ -19,8 +19,6 @@ const DashboardPage = () => {
       .then((activity) => setUserActivity(activity.data.sessions));
   }, []);
 
-  console.log(userActivity);
-
   // ---------------------- User Name ----------------------
   const [userName, setUserName] = useState([]);
 
@@ -41,7 +39,34 @@ const DashboardPage = () => {
       );
   }, []);
 
-  console.log(userAverageSessions);
+  // -------------------  Activity type --------------------
+  const [userActivityType, setUserActivityType] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/user/18/performance")
+      .then((response) => response.json())
+      .then((activityType) => setUserActivityType(activityType.data));
+  }, []);
+
+  // -------------------  Nutrition --------------------
+  const [userNutrition, setUserNutrition] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/user/18")
+      .then((response) => response.json())
+      .then((user) => setUserNutrition(user.data.keyData));
+  }, []);
+
+  // -------------------  Radial Charts --------------------
+  const [userRadial, setUserRadial] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/user/18")
+      .then((response) => response.json())
+      .then((user) => setUserRadial(user.data.score));
+  }, []);
+
+  console.log(userRadial);
 
   // ------------------- Dashboard Page -------------------
 
@@ -56,12 +81,12 @@ const DashboardPage = () => {
             <BarCharts data={userActivity} />
             <div className="dashboard__graphs-content">
               <LineCharts data={userAverageSessions} />
-              <RadarCharts />
-              <RadialCharts />
+              <RadarCharts data={userActivityType} />
+              <RadialCharts data={userRadial} />
             </div>
           </div>
         </div>
-        <NutritionList />
+        <NutritionList data={userNutrition} />
       </div>
     </main>
   );

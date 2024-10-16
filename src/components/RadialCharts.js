@@ -7,33 +7,35 @@ import {
 } from "recharts";
 import "../styles/components/radialchart.css";
 
-const data = [
-  {
-    name: "18-24",
-    uv: 12,
-    pv: 2400,
-    fill: "#e60000",
-  },
-];
+const RadialCharts = ({ data }) => {
+  const percentage = data * 100;
 
-const RadialCharts = (props) => {
+  const chartData = [
+    {
+      name: "Progress",
+      uv: percentage,
+      fill: "#e60000",
+    },
+  ];
+
   return (
     <div className="radialchart">
+      <h3 className="radialchart__title">Score</h3>
       <ResponsiveContainer width="90%" height={300}>
         <RadialBarChart
           innerRadius={100}
           outerRadius={100}
           barSize={15}
-          data={data}
-          startAngle={-280}
-          endAngle={80}
+          data={chartData}
+          startAngle={90}
+          endAngle={450}
         >
           <RadialBar background dataKey="uv" cornerRadius={10} />
-          <PolarAngleAxis tick={false} domain={[0, 100]} type="number" />
+          <PolarAngleAxis tick={false} type="number" domain={[0, 100]} />
         </RadialBarChart>
       </ResponsiveContainer>
       <div className="radialchart__text">
-        <h3>{props.pourcent}</h3>
+        <h3>{percentage}%</h3>
         <p>de votre objectif</p>
       </div>
     </div>

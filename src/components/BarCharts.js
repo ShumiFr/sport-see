@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../styles/components/graphActivitéQuotidienne.css";
+import "../styles/components/barchart.css";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -30,8 +31,8 @@ const BarCharts = ({ data }) => {
         <p className="barchart__infos__title">Activité quotidienne</p>
         <div className="barchart__infos__legend">
           <ul>
-            <li>poids (kg)</li>
-            <li>calories brûlées (kCal)</li>
+            <li className="poids">Poids (kg)</li>
+            <li className="calories">Calories brûlées (kCal)</li>
           </ul>
         </div>
       </div>

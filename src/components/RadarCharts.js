@@ -7,57 +7,27 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+const RadarCharts = ({ data }) => {
+  if (!data || !data.data) {
+    return null;
+  }
 
-const RadarCharts = () => {
+  const mappedData = data.data.map((item) => ({
+    ...item,
+    kind: data.kind[item.kind],
+  }));
+
   return (
     <div className="radarchart">
       <ResponsiveContainer width="90%" height={300}>
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={mappedData}>
           <PolarGrid />
           <PolarAngleAxis
             tick={{ fill: "white", fontSize: 15, fontWeight: "bold" }}
-            dataKey="subject"
+            dataKey="kind"
           />
           <Radar
-            dataKey="A"
+            dataKey="value"
             stroke="#e60000"
             fill="#e60000"
             fillOpacity={0.6}

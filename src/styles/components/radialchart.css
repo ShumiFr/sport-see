@@ -5,6 +5,12 @@
   position: relative;
 }
 
+.radialchart__title {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
 .radialchart__text {
   display: flex;
   align-items: center;
@@ -30,4 +36,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 26px;
+  margin-top: 15px;
+  margin-bottom: 0;
 }
