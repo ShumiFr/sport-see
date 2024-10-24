@@ -24,7 +24,15 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-const BarCharts = ({ data }) => {
+const formatXAxis = (tickItem) => {
+  const date = new Date(tickItem);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear().toString().slice(-2);
+  return `${day}/${month}/${year}`;
+};
+
+const BarCharts = ({ activities }) => {
   return (
     <div className="barchart">
       <div className="barchart__infos">
@@ -36,14 +44,19 @@ const BarCharts = ({ data }) => {
           </ul>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data}>
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={activities} barGap={10}>
           <CartesianGrid
             strokeDasharray="2 2"
             horizontal={true}
             vertical={false}
           />
-          <XAxis dataKey="day" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="day"
+            tickFormatter={formatXAxis}
+            tickLine={false}
+            axisLine={false}
+          />
           <YAxis orientation="right" tickLine={false} axisLine={false} />
           <Tooltip
             animationEasing="ease-out"
@@ -52,14 +65,14 @@ const BarCharts = ({ data }) => {
             wrapperStyle={{ outline: "none" }}
           />
           <Bar
-            radius={[10, 10, 0, 0]}
-            barSize={10}
+            radius={[5, 5, 0, 0]}
+            barSize={8}
             dataKey="kilogram"
             fill="#000000"
           />
           <Bar
-            radius={[10, 10, 0, 0]}
-            barSize={10}
+            radius={[5, 5, 0, 0]}
+            barSize={8}
             dataKey="calories"
             fill="#e60000"
           />

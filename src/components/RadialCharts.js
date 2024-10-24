@@ -7,8 +7,8 @@ import {
 } from "recharts";
 import "../styles/components/radialchart.css";
 
-const RadialCharts = ({ data }) => {
-  const percentage = data * 100;
+const RadialCharts = ({ score }) => {
+  const percentage = score * 100;
 
   const chartData = [
     {
@@ -21,10 +21,10 @@ const RadialCharts = ({ data }) => {
   return (
     <div className="radialchart">
       <h3 className="radialchart__title">Score</h3>
-      <ResponsiveContainer width="90%" height={300}>
+      <ResponsiveContainer width="90%" height={200}>
         <RadialBarChart
-          innerRadius={100}
-          outerRadius={100}
+          innerRadius={80}
+          outerRadius={70}
           barSize={15}
           data={chartData}
           startAngle={90}

@@ -51,7 +51,7 @@ const renderLegend = () => {
   );
 };
 
-const LineCharts = ({ data }) => {
+const LineCharts = ({ averages }) => {
   const formatDay = (day) => {
     const days = ["L", "M", "M", "J", "V", "S", "D"];
     return days[day - 1];
@@ -60,8 +60,8 @@ const LineCharts = ({ data }) => {
   return (
     <div className="linechart">
       <div className="linechart__legend">{renderLegend()}</div>
-      <ResponsiveContainer width="90%" height={300}>
-        <LineChart data={data}>
+      <ResponsiveContainer width="90%" height={200}>
+        <LineChart data={averages}>
           <defs>
             <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="rgba(255, 255, 255, 0.3)" />

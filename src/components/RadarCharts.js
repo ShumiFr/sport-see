@@ -7,23 +7,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const RadarCharts = ({ data }) => {
-  if (!data || !data.data) {
+const RadarCharts = ({ performances }) => {
+  if (!performances || !performances.data) {
     return null;
   }
 
-  const mappedData = data.data.map((item) => ({
+  const mappedData = performances.data.map((item) => ({
     ...item,
-    kind: data.kind[item.kind],
+    kind: performances.kind[item.kind],
   }));
 
   return (
     <div className="radarchart">
-      <ResponsiveContainer width="90%" height={300}>
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={mappedData}>
+      <ResponsiveContainer width="100%" height={200}>
+        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={mappedData}>
           <PolarGrid />
           <PolarAngleAxis
-            tick={{ fill: "white", fontSize: 15, fontWeight: "bold" }}
+            tick={{ fill: "white", fontSize: 10, fontWeight: "bold" }}
             dataKey="kind"
           />
           <Radar

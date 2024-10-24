@@ -1,72 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
 import MenuHorizontal from "../components/MenuHorizontal";
 import MenuVertical from "../components/MenuVertical";
-import Header from "../components/Header";
-import NutritionList from "../components/NutritionList";
+import Nutrition from "../components/Nutrition";
 import "../styles/pages/dashboard.css";
 import BarCharts from "../components/BarCharts";
 import LineCharts from "../components/LineCharts";
 import RadarCharts from "../components/RadarCharts";
 import RadialCharts from "../components/RadialCharts";
+import Error from "../components/Error";
+import { useFetchUser } from "../services/index";
+import "../styles/components/header.css";
 
 const DashboardPage = () => {
-  // ------------------- User Activity --------------------
-  const [userActivity, setUserActivity] = useState([]);
+  const { id } = useParams();
 
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18/activity")
-      .then((response) => response.json())
-      .then((activity) => setUserActivity(activity.data.sessions));
-  }, []);
+  const userActivityData = useFetchUser({
+    url: `user/${id}/activity`,
+    resource: "activities",
+  });
 
-  // ---------------------- User Name ----------------------
-  const [userName, setUserName] = useState([]);
+  const activityHasError =
+    userActivityData?.hasError && userActivityData?.resource === "activities";
 
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18")
-      .then((response) => response.json())
-      .then((user) => setUserName(user.data.userInfos.firstName));
-  }, []);
+  const userAverageData = useFetchUser({
+    url: `user/${id}/average-sessions`,
+    resource: "averages",
+  });
 
-  // ---------------------- User Name ----------------------
-  const [userAverageSessions, setUserAverageSessions] = useState([]);
+  const averagesHasError =
+    userAverageData?.hasError && userAverageData?.resource === "averages";
 
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18/average-sessions")
-      .then((response) => response.json())
-      .then((averageSessions) =>
-        setUserAverageSessions(averageSessions.data.sessions)
-      );
-  }, []);
+  const userPerformanceData = useFetchUser({
+    url: `user/${id}/performance`,
+    resource: "performances",
+  });
 
-  // -------------------  Activity type --------------------
-  const [userActivityType, setUserActivityType] = useState([]);
+  const performanceHasError =
+    userPerformanceData?.hasError &&
+    userPerformanceData?.resource === "performances";
 
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18/performance")
-      .then((response) => response.json())
-      .then((activityType) => setUserActivityType(activityType.data));
-  }, []);
+  const userData = useFetchUser({
+    url: `user/${id}`,
+    resource: "users",
+  });
 
-  // -------------------  Nutrition --------------------
-  const [userNutrition, setUserNutrition] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18")
-      .then((response) => response.json())
-      .then((user) => setUserNutrition(user.data.keyData));
-  }, []);
-
-  // -------------------  Radial Charts --------------------
-  const [userRadial, setUserRadial] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/user/18")
-      .then((response) => response.json())
-      .then((user) => setUserRadial(user.data.score));
-  }, []);
-
-  console.log(userRadial);
+  const userDataHasError = userData?.hasError && userData?.resource === "users";
 
   // ------------------- Dashboard Page -------------------
 
@@ -76,17 +55,51 @@ const DashboardPage = () => {
       <div className="dashboard__content">
         <MenuVertical />
         <div className="dashboard__graphs">
-          <Header name={userName} />
+          <div className="header">
+            <h1>
+              Bonjour{" "}
+              <strong>
+                {userDataHasError ? (
+                  <Error description="Erreur lors de la récupération du prénom de l'utilisateur. Veuillez réessayer plus tard." />
+                ) : (
+                  userData?.userInfos.firstName
+                )}
+              </strong>
+            </h1>
+            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+          </div>
           <div className="dashboard__graphs-container">
-            <BarCharts data={userActivity} />
+            {activityHasError ? (
+              <Error description="Impossible de charger les données d'activité. Veuillez vérifier votre connexion ou réessayer ultérieurement." />
+            ) : (
+              <BarCharts activities={userActivityData} />
+            )}
             <div className="dashboard__graphs-content">
-              <LineCharts data={userAverageSessions} />
-              <RadarCharts data={userActivityType} />
-              <RadialCharts data={userRadial} />
+              {averagesHasError ? (
+                <Error description="Erreur lors du chargement des sessions moyennes. Un problème est survenu avec le serveur." />
+              ) : (
+                <LineCharts averages={userAverageData} />
+              )}
+              {performanceHasError ? (
+                <Error description="Impossible de récupérer les performances. Veuillez actualiser la page ou contacter le support si le problème persiste." />
+              ) : (
+                userPerformanceData && (
+                  <RadarCharts performances={userPerformanceData} />
+                )
+              )}
+              {userDataHasError ? (
+                <Error description="Erreur lors de la récupération des données pour le diagramme en cercle. Veuillez vérifier les informations utilisateur." />
+              ) : (
+                <RadialCharts score={userData?.score || userData?.todayScore} />
+              )}
             </div>
           </div>
         </div>
-        <NutritionList data={userNutrition} />
+        {userDataHasError ? (
+          <Error description="Impossible de charger les informations de l'utilisateur. Assurez-vous que les données sont disponibles ou contactez le support." />
+        ) : (
+          userData && <Nutrition information={userData?.keyData} />
+        )}
       </div>
     </main>
   );
