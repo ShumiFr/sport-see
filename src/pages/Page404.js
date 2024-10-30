@@ -11,9 +11,10 @@ const Page404 = () => {
       <div className="error-page__content">
         <h1>404</h1>
         <p>Page not found</p>
-      </div>
-      <div className="error-page__links">
-        <a href="/user/18">Redirection vers l'utilisateur 18</a>
+        <div className="error-page__links">
+          <a href="/user/18">Redirection vers l'utilisateur 18</a>
+          <a href="/user/12">Redirection vers l'utilisateur 12</a>
+        </div>
       </div>
     </div>
   );
