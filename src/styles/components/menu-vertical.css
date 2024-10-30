@@ -1,4 +1,4 @@
-.menu-vertical {
+/*.menu-vertical {
   position: relative;
   background: var(--black);
   display: flex;
@@ -8,6 +8,21 @@
   color: var(--white);
   width: 150px;
   height: 100%;
+}*/
+
+.menu-vertical {
+  position: absolute;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  width: 100px;
+  top: 0;
+  left: 0;
+  bottom: 0px;
+  z-index: 0;
 }
 
 .menu-vertical__list {
@@ -19,11 +34,21 @@
 
 .module {
   margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.module:first-child {
+  margin-top: 50px;
+}
+
+.module:hover {
+  scale: 1.1;
+  cursor: pointer;
 }
 
 .copyright {
   position: absolute;
-  font-size: 15px;
+  font-size: 13px;
   width: 200px;
   transform: rotate(-90deg);
   bottom: 100px;

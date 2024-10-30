@@ -44,10 +44,10 @@ const BarCharts = ({ activities }) => {
           </ul>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={200}>
-        <BarChart data={activities} barGap={10}>
+      <ResponsiveContainer width="100%" height={150}>
+        <BarChart data={activities} barGap={8}>
           <CartesianGrid
-            strokeDasharray="2 2"
+            strokeDasharray="2 2*"
             horizontal={true}
             vertical={false}
           />
@@ -57,7 +57,12 @@ const BarCharts = ({ activities }) => {
             tickLine={false}
             axisLine={false}
           />
-          <YAxis orientation="right" tickLine={false} axisLine={false} />
+          <YAxis
+            orientation="right"
+            tickLine={false}
+            axisLine={false}
+            ticks={[0, 300, 600]}
+          />
           <Tooltip
             animationEasing="ease-out"
             content={<CustomTooltip />}
@@ -66,13 +71,13 @@ const BarCharts = ({ activities }) => {
           />
           <Bar
             radius={[5, 5, 0, 0]}
-            barSize={8}
+            barSize={6}
             dataKey="kilogram"
             fill="#000000"
           />
           <Bar
             radius={[5, 5, 0, 0]}
-            barSize={8}
+            barSize={6}
             dataKey="calories"
             fill="#e60000"
           />

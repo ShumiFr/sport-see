@@ -11,10 +11,10 @@
 
 body {
   font-family: var(--font);
-  margin: 0;
+  margin: auto;
   padding: 0;
-  min-width: 1024px;
-  min-height: 780px;
+  max-width: 1024px;
+  max-height: 780px;
 }
 
 a,
