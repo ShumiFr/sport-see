@@ -1,0 +1,26 @@
+.header {
+  align-self: flex-start;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+
+.header h1 {
+  color: #000;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.header strong {
+  color: #ff0101;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.header p {
+  font-size: 14px;
+}

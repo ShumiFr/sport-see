@@ -1,0 +1,43 @@
+.radialchart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radialchart__title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+}
+
+.radialchart__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100px;
+}
+
+.radialchart__text p {
+  text-align: center;
+  color: #74798c;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 10px 0 10px 0;
+}
+
+.radialchart__text h3 {
+  color: #282d30;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}

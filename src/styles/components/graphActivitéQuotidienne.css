@@ -1,0 +1,5 @@
+.custom-tooltip {
+  background: var(--red);
+  padding: 10px 20px;
+  color: var(--white);
+}

@@ -1,0 +1,80 @@
+.dashboard__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 780px;
+}
+
+.dashboard__graphs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 65%;
+  margin-left: 85px;
+}
+
+.dashboard__graphs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.dashboard__graphs-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  width: 105%;
+}
+
+.linechart,
+.radarchart,
+.radialchart {
+  width: 31%;
+  border-radius: 5px;
+}
+
+.linechart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: #ff0000;
+  padding-top: 30px;
+}
+
+.linechart__legend {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+.linechart__legend p {
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.radarchart {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: var(--black);
+  padding: 15px 0 15px 0;
+}
+
+.radialchart {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: var(--lightgrey);
+  padding: 15px 0 15px 0;
+}

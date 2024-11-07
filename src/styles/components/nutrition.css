@@ -1,0 +1,40 @@
+.nutrition__list {
+  width: 20%;
+  margin-top: 170px;
+}
+
+.nutrition {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--lightgrey);
+  margin: 30px 0;
+  padding: 5px 0;
+  border-radius: 10px;
+}
+
+.nutrition__info {
+  padding-right: 20px;
+}
+
+.nutrition__image {
+  padding: 0 25px 0 25px;
+}
+
+.nutrition__number {
+  color: #282d30;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 20px 0 5px 0;
+}
+
+.nutrition__name {
+  color: #74798c;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 5px 0 20px 0;
+}
