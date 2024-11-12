@@ -60,7 +60,7 @@ const LineCharts = ({ averages }) => {
   return (
     <div className="linechart">
       <div className="linechart__legend">{renderLegend()}</div>
-      <ResponsiveContainer width="90%" height={200}>
+      <ResponsiveContainer width="90%" height={170}>
         <LineChart data={averages}>
           <defs>
             <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">

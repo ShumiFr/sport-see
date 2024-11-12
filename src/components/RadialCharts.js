@@ -21,7 +21,7 @@ const RadialCharts = ({ score }) => {
   return (
     <div className="radialchart">
       <h3 className="radialchart__title">Score</h3>
-      <ResponsiveContainer width="90%" height={200}>
+      <ResponsiveContainer width="90%" height={170}>
         <RadialBarChart
           innerRadius={80}
           outerRadius={70}
@@ -30,8 +30,13 @@ const RadialCharts = ({ score }) => {
           startAngle={90}
           endAngle={450}
         >
-          <RadialBar background dataKey="uv" cornerRadius={10} />
+          <RadialBar
+            background={{ fill: "#FFFFFF" }}
+            dataKey="uv"
+            cornerRadius={10}
+          />
           <PolarAngleAxis tick={false} type="number" domain={[0, 100]} />
+          <circle cx="50%" cy="50%" r="65" fill="#FFFFFF" />
         </RadialBarChart>
       </ResponsiveContainer>
       <div className="radialchart__text">
