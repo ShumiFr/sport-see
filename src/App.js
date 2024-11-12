@@ -6,6 +6,7 @@ import Page404 from "./pages/Page404.js";
 const GuardedRoute = () => {
   const { id } = useParams();
   const idEnInt = parseInt(id);
+
   return id === undefined || (idEnInt !== 12 && idEnInt !== 18) ? (
     <Navigate to="/404" />
   ) : (

@@ -27,12 +27,23 @@ const CustomTooltip = ({ active, payload }) => {
 const formatXAxis = (tickItem) => {
   const date = new Date(tickItem);
   const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear().toString().slice(-2);
-  return `${day}/${month}/${year}`;
+  return `${day}`;
 };
 
 const BarCharts = ({ activities }) => {
+  if (!activities || activities.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  // Définir les valeurs min et max pour l'axe des poids
+  const minWeight = Math.floor(
+    Math.min(...activities.map((d) => d.kilogram)) - 1
+  );
+  const maxWeight = Math.ceil(
+    Math.max(...activities.map((d) => d.kilogram)) + 1
+  );
+  const avgWeight = (minWeight + maxWeight) / 2;
+
   return (
     <div className="barchart">
       <div className="barchart__infos">
@@ -44,7 +55,7 @@ const BarCharts = ({ activities }) => {
           </ul>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={150}>
+      <ResponsiveContainer width="100%" height={200}>
         <BarChart data={activities} barGap={8}>
           <CartesianGrid
             strokeDasharray="2 2*"
@@ -56,12 +67,24 @@ const BarCharts = ({ activities }) => {
             tickFormatter={formatXAxis}
             tickLine={false}
             axisLine={false}
+            tick={{ fill: "rgba(0, 0, 0, 0.5)" }}
           />
           <YAxis
+            yAxisId="left"
+            orientation="left"
+            tickLine={false}
+            axisLine={false}
+            domain={[0, "dataMax + 100"]}
+            hide={true}
+          />
+          <YAxis
+            yAxisId="right"
             orientation="right"
             tickLine={false}
             axisLine={false}
-            ticks={[0, 300, 600]}
+            domain={[minWeight, maxWeight]}
+            ticks={[minWeight, avgWeight, maxWeight]}
+            tick={{ fill: "rgba(0, 0, 0, 0.5)" }}
           />
           <Tooltip
             animationEasing="ease-out"
@@ -70,12 +93,14 @@ const BarCharts = ({ activities }) => {
             wrapperStyle={{ outline: "none" }}
           />
           <Bar
+            yAxisId="right"
             radius={[5, 5, 0, 0]}
             barSize={6}
             dataKey="kilogram"
             fill="#000000"
           />
           <Bar
+            yAxisId="left"
             radius={[5, 5, 0, 0]}
             barSize={6}
             dataKey="calories"

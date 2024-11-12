@@ -19,7 +19,7 @@ const RadarCharts = ({ performances }) => {
 
   return (
     <div className="radarchart">
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={170}>
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={mappedData}>
           <PolarGrid />
           <PolarAngleAxis
